@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentino's Ambos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('/img/background.jpg'); /* tu imagen */
+      background-attachment: fixed;  /* parallax effect */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    /* Capa oscura para difuminar y dar contraste al texto */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 25, 47, 0.6); /* azul/verde oscuro translúcido */
+      backdrop-filter: blur(4px);
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="text-white relative">
+
+  <div class="overlay"></div>
+<!-- HERO -->
+<section class="relative max-w-7xl mx-auto px-6 py-24 flex flex-col items-center text-center">
+  
+  <!-- LOGO -->
+  <img src="./img/logo.png" alt="Logo Valentino's Ambos" class="w-32 h-32 rounded-full shadow-lg mb-6">
+
+  <h1 class="text-4xl md:text-5xl font-bold mb-4">Uniformes Profesionales al por Mayor</h1>
+  
+  <p class="text-lg mb-8">Personalizamos tus uniformes con logo bordado, estilo e identidad corporativa. Envíos a todo el país.</p>
+
+  <div class="flex flex-col sm:flex-row gap-4">
+    <a href="#formulario" class="bg-white text-teal-800 font-semibold px-6 py-3 rounded-2xl shadow-lg hover:bg-gray-100 transition">Solicitar Presupuesto</a>
+    <a href="https://wa.me/XXXXXXXXXX" class="bg-emerald-600 px-6 py-3 rounded-2xl shadow-lg hover:bg-emerald-500 transition">WhatsApp Directo</a>
+  </div>
+
+</section>
+
+
+  <!-- BENEFICIOS -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">¿Por qué elegirnos?</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-semibold mb-2">Imagen Corporativa</h3>
+        <p>Uniformes que refuerzan la identidad de tu empresa.</p>
+      </div>
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-semibold mb-2">Logo Bordado</h3>
+        <p>Convierte a tu equipo en embajadores de tu marca.</p>
+      </div>
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-semibold mb-2">Funcionalidad</h3>
+        <p>Telas cómodas y resistentes según cada rubro.</p>
+      </div>
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-semibold mb-2">Precios Competitivos</h3>
+        <p>Venta al por mayor con envíos a todo el país.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORES -->
+  <section class="max-w-7xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-3xl font-bold mb-12">Uniformes según tu rubro</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-bold mb-2">Estética</h3>
+        <p>Uniformes elegantes y modernos para salones y spas.</p>
+      </div>
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-bold mb-2">Hospitalario</h3>
+        <p>Indumentaria funcional y cómoda para clínicas y hospitales.</p>
+      </div>
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <h3 class="font-bold mb-2">Geriatría</h3>
+        <p>Uniformes resistentes y pensados para la atención de mayores.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUESTRARIO -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Muestrario de Modelos</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="rounded-2xl overflow-hidden shadow-lg">
+        <img src="valentino.jpeg" alt="Modelo White" class="w-full">
+        <div class="p-6">
+          <h3 class="font-semibold">Modelo White</h3>
+          <p class="text-sm">Clásico y elegante, ideal para uso hospitalario.</p>
+        </div>
+      </div>
+      <!-- Podés duplicar más modelos aquí -->
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Lo que dicen nuestros clientes</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <p>“Excelente calidad y atención. Nuestro equipo luce profesional y cómodo.”</p>
+        <span class="block mt-4 font-semibold">Clínica Salud+</span>
+      </div>
+      <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
+        <p>“Los uniformes con logo bordado reforzaron nuestra imagen corporativa.”</p>
+        <span class="block mt-4 font-semibold">Residencia La Esperanza</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section id="formulario" class="max-w-3xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-8">Solicitá tu Presupuesto</h2>
+    <form class="space-y-6 bg-white bg-opacity-20 p-8 rounded-2xl shadow">
+      <input type="text" placeholder="Nombre completo" class="w-full px-4 py-3 rounded-lg text-gray-800">
+      <input type="text" placeholder="Institución / Empresa" class="w-full px-4 py-3 rounded-lg text-gray-800">
+      <input type="number" placeholder="Cantidad estimada de uniformes" class="w-full px-4 py-3 rounded-lg text-gray-800">
+      <textarea placeholder="Mensaje" rows="4" class="w-full px-4 py-3 rounded-lg text-gray-800"></textarea>
+      <button class="w-full bg-teal-800 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg hover:bg-teal-700 transition">Enviar Solicitud</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 bg-opacity-80 text-gray-400 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p>© 2025 Valentino's Ambos. Todos los derechos reservados.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-white">Instagram</a>
+        <a href="#" class="hover:text-white">Facebook</a>
+        <a href="#" class="hover:text-white">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
