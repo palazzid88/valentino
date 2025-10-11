@@ -1,229 +1,513 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentino's Ambos</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Valentino's Ambos — Uniformes profesionales al por mayor, personalizados por rubro y con bordado de logo. Soluciones para clínicas, estéticas, geriátricos y empresas." />
+  <title>Valentino's Ambos — Uniformes profesionales</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    body {
-      background-image: url('./img/background.jpg');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
+    /* Variables de color (fácil edición) */
+    :root{
+      --verde-oscuro: #023e51;
+      --verde: #279580;
+      --blanco: #ffffff;
+      --negro: #000000;
+      --azul-oscuro: #0f2839;
+      --verde-oliva: #1c818f;
+      --celeste: #3cabcb;
+      --rosa: #f01a64;
+      --glass: rgba(255,255,255,0.06);
+    }
+
+    /* Fuentes */
+    .font-head { font-family: 'Montserrat', sans-serif; }
+    .font-body { font-family: 'Poppins', sans-serif; }
+
+    /* Hero background overlay */
+    .hero-bg {
+      background-image: url('./img/hero-placeholder.jpg');
       background-size: cover;
+      background-position: center;
+    }
+    .overlay {
+      background: linear-gradient(180deg, rgba(2,62,81,0.85) 0%, rgba(2,62,81,0.80) 100%);
     }
 
-    .arrow {
+    /* Card glass effect */
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* Indicators for animations */
+    [data-animate] { opacity: 0; transform: translateY(18px); transition: all 700ms cubic-bezier(.2,.9,.3,1); }
+    [data-animate].in-view { opacity: 1; transform: translateY(0); }
+
+    /* Simple fade-in for hero texts */
+    .fade-delay-200 { transition-delay: 200ms; }
+    .fade-delay-400 { transition-delay: 400ms; }
+    .fade-delay-600 { transition-delay: 600ms; }
+
+    /* WhatsApp floating */
+    .whatsapp-float {
+      background: linear-gradient(135deg, var(--celeste), var(--verde));
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    /* Minimal responsive tweaks */
+    @media (max-width: 640px) {
+      .hero-bg { background-attachment: scroll; }
+    }
+
+    /* Small utility for accent underline */
+    .accent-underline {
+      position: relative;
+    }
+    .accent-underline::after {
+      content: '';
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      padding: 0.5rem 1rem;
-      font-size: 1.5rem;
-      cursor: pointer;
-      border-radius: 0.5rem;
-      z-index: 10;
-      user-select: none;
-    }
-    .arrow:hover {
-      background: rgba(0,0,0,0.7);
-    }
-    .left-arrow {
-      left: 1rem;
-    }
-    .right-arrow {
-      right: 1rem;
-    }
-    /* Ocultar flechas en mobile */
-    @media (max-width: 1023px) {
-      .arrow {
-        display: none;
-      }
-    }
-
-    .carousel img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* <-- esto reemplaza object-contain */
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .carousel img.active {
-      opacity: 1;
-    }
-
-    /* Indicadores */
-    .indicator {
-      width: 10px;
-      height: 10px;
-      border-radius: 9999px;
-      background: white;
-      opacity: 0.5;
-      cursor: pointer;
-    }
-    .indicator.active {
-      opacity: 1;
+      left: 0;
+      bottom: -6px;
+      width: 48%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--rosa));
+      border-radius: 4px;
+      opacity: 0.95;
     }
   </style>
 </head>
-<body class="text-white relative">
+<body class="font-body text-white antialiased" style="background: var(--azul-oscuro);">
 
-<!-- HERO -->
-<section class="relative max-w-7xl mx-auto px-6 py-24 flex flex-col items-center text-center">
-  <img src="./img/logo.png" alt="Logo Valentino's Ambos" class="w-32 h-32 rounded-full shadow-lg mb-6">
-  <h1 class="text-4xl md:text-5xl font-bold mb-4">Uniformes Profesionales al por Mayor</h1>
-  <p class="text-lg mb-8">Personalizamos tus uniformes con logo bordado, estilo e identidad corporativa. Envíos a todo el país.</p>
-  <div class="flex flex-col sm:flex-row gap-4">
-    <a href="#formulario" class="bg-white text-teal-800 font-semibold px-6 py-3 rounded-2xl shadow-lg hover:bg-gray-100 transition">Solicitar Presupuesto</a>
-    <a href="https://wa.me/XXXXXXXXXX" class="bg-emerald-600 px-6 py-3 rounded-2xl shadow-lg hover:bg-emerald-500 transition">WhatsApp Directo</a>
-  </div>
-</section>
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between glass">
+      <a href="#" class="flex items-center gap-3">
+        <img src="./img/logo-placeholder.png" alt="Logo Valentino's Ambos" class="w-12 h-12 rounded-md object-cover">
+        <div>
+          <span class="block font-head text-lg">Valentino's Ambos</span>
+          <small class="block text-xs text-gray-300">Uniformes profesionales al por mayor</small>
+        </div>
+      </a>
 
-<!-- BENEFICIOS + CAROUSEL -->
-<section class="max-w-7xl mx-auto px-6 py-16">
-  <div class="flex flex-wrap lg:flex-nowrap items-start gap-12">
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#beneficios" class="hover:text-white text-gray-200">Qué ofrecemos</a>
+        <a href="#rubros" class="hover:text-white text-gray-200">Rubros</a>
+        <a href="#galeria" class="hover:text-white text-gray-200">Galería</a>
+        <a href="#testimonios" class="hover:text-white text-gray-200">Testimonios</a>
+        <a href="#contacto" class="ml-2 inline-block px-4 py-2 rounded-full text-sm font-semibold bg-[var(--verde)] hover:scale-105 transform transition">Solicitar presupuesto</a>
+      </div>
 
-    <!-- LISTA DE BENEFICIOS -->
-    <ul class="flex-1 min-w-[250px] space-y-6 text-white text-lg">
-      <li class="flex items-start gap-3">
-        <span class="text-green-500 text-2xl">&#10003;</span>
-        <span>Uniformes que refuerzan la identidad de tu empresa.</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="text-green-500 text-2xl">&#10003;</span>
-        <span>Convierte a tu equipo en embajadores de tu marca.</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="text-green-500 text-2xl">&#10003;</span>
-        <span>Telas cómodas y resistentes según cada rubro.</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="text-green-500 text-2xl">&#10003;</span>
-        <span>Venta al por mayor con envíos a todo el país.</span>
-      </li>
-    </ul>
+      <!-- Mobile menu button (simple) -->
+      <div class="md:hidden">
+        <button id="btnMenu" aria-label="Abrir menú" class="p-2 rounded-md glass">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
 
-    <!-- CARRUSEL -->
-    <div class="flex-1 min-w-[300px] w-full lg:w-auto relative h-[24rem] md:h-[30rem] lg:h-[36rem]">
-      <div class="relative w-full h-full overflow-hidden rounded-2xl shadow-lg carousel">
-        <img src="./img/1.png" class="active">
-        <img src="./img/2.png">
-        <img src="./img/3.png">
-        <img src="./img/4.png">
-        <img src="./img/5.png">
-        <img src="./img/6.png">
-        <img src="./img/7.png">
-        <img src="./img/8.png">
-        <img src="./img/9.png">
-        <img src="./img/10.png">
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="hidden bg-[rgba(0,0,0,0.6)]">
+      <div class="px-6 py-4 flex flex-col gap-2">
+        <a href="#beneficios" class="py-2">Qué ofrecemos</a>
+        <a href="#rubros" class="py-2">Rubros</a>
+        <a href="#galeria" class="py-2">Galería</a>
+        <a href="#testimonios" class="py-2">Testimonios</a>
+        <a href="#contacto" class="py-2 font-semibold bg-[var(--verde)] rounded-lg text-center">Solicitar presupuesto</a>
+      </div>
+    </div>
+  </header>
 
-        <!-- Flechas -->
-        <div class="arrow left-arrow">&#10094;</div>
-        <div class="arrow right-arrow">&#10095;</div>
+  <!-- HERO -->
+  <main class="hero-bg min-h-[80vh] relative">
+    <div class="overlay absolute inset-0"></div>
+    <div class="max-w-7xl mx-auto px-6 py-24 relative z-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="font-head text-4xl md:text-5xl leading-tight mb-4" data-animate>
+            Equipamos la imagen de tu equipo con <span class="text-[var(--celeste)]">estilo</span> y <span class="text-[var(--rosa)]">profesionalismo</span>.
+          </h1>
+          <p class="text-gray-200 max-w-xl mb-6" data-animate>Diseñamos uniformes por rubro, personalizados con tu logo bordado. Soluciones mayoristas para clínicas, estéticas, geriátricos y empresas.</p>
 
-        <!-- Indicadores -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-          <span class="indicator active"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
+          <div class="flex flex-wrap gap-3" data-animate>
+            <a href="#contacto" class="inline-block px-6 py-3 rounded-full bg-[var(--verde)] font-semibold shadow-lg hover:scale-105 transition transform">Solicitar presupuesto</a>
+            <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-transparent ring-1 ring-[var(--celeste)] hover:bg-[rgba(60,188,203,0.08)] transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--celeste)]" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.966 11.966 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.64 6.01L0 24l6.09-1.58A11.94 11.94 0 0012 24c6.628 0 12-5.372 12-12 0-3.2-1.25-6.13-3.48-8.52zM12 21.8c-1.84 0-3.62-.5-5.18-1.44l-.37-.22-3.62.94.96-3.54-.24-.37A9.78 9.78 0 012.2 12 9.8 9.8 0 0112 2.2c5.42 0 9.8 4.38 9.8 9.8 0 5.42-4.38 9.8-9.8 9.8z"/><path d="M17.2 14.64c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.13-.18.27-.71.88-.87 1.06-.16.18-.33.21-.61.07-.27-.13-1.13-.41-2.15-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.33.4-.5.13-.18.18-.33.27-.55.09-.22.04-.41-.02-.55-.06-.15-.61-1.48-.84-2.03-.22-.53-.44-.46-.61-.47l-.52-.01c-.18 0-.47.06-.72.33-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.94 2.96 4.7 4.03 1.65.71 2.42.85 3.29.69.53-.09 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.06-.12-.25-.18-.52-.31z"/></svg>
+              <span class="text-[var(--celeste)] font-medium">WhatsApp</span>
+            </a>
+          </div>
+
+          <div class="mt-6 text-sm text-gray-300" data-animate>
+            <span class="inline-block mr-3">✅ Producción nacional</span>
+            <span class="inline-block mr-3">✅ Bordado de logo</span>
+            <span class="inline-block">✅ Envíos a todo el país</span>
+          </div>
+        </div>
+
+        <!-- Hero image / placeholder -->
+        <div class="relative flex items-center justify-center" data-animate>
+          <div class="w-full max-w-[520px] rounded-2xl overflow-hidden shadow-2xl glass p-4">
+            <img src="./img/hero-team-placeholder.jpg" alt="Equipo con uniformes profesionales" loading="lazy" class="w-full h-64 object-cover rounded-md">
+            <div class="mt-4 text-sm text-gray-300">Ejemplo de uniformes corporativos personalizados — imagen ilustrativa</div>
+          </div>
         </div>
       </div>
     </div>
+  </main>
 
-  </div>
-</section>
+  <!-- BENEFICIOS / PROPOSICION DE VALOR -->
+  <section id="beneficios" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-head text-3xl mb-4" data-animate>Lo que ofrecemos</h2>
+        <p class="text-gray-300 mb-6" data-animate>Más que un uniforme: una solución de imagen profesional. Diseñamos y adaptamos cada conjunto para identificar la profesión, la especialización y la cultura de tu empresa.</p>
 
-<!-- SECTORES -->
-<section class="max-w-7xl mx-auto px-6 py-20 text-center">
-  <h2 class="text-3xl font-bold mb-12">Uniformes según tu rubro</h2>
-  <div class="grid md:grid-cols-3 gap-8">
-    <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
-      <h3 class="font-bold mb-2">Estética</h3>
-      <p>Uniformes elegantes y modernos para salones y spas.</p>
+        <ul class="grid sm:grid-cols-2 gap-4" aria-hidden="false">
+          <li class="flex items-start gap-3 p-4 glass rounded-lg" data-animate>
+            <div class="p-2 rounded-md bg-[var(--celeste)]/10 text-[var(--celeste)]">
+              <!-- icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c2.761 0 5-2.239 5-5S14.761 1 12 1 7 3.239 7 6s2.239 5 5 5zM6 22a6 6 0 0112 0"/></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Diseño por rubro</h4>
+              <p class="text-sm text-gray-300">Estética, salud, geriatría, gastronomía y más — cada rubro con su patrón funcional y estético.</p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-3 p-4 glass rounded-lg" data-animate>
+            <div class="p-2 rounded-md bg-[var(--verde)]/10 text-[var(--verde)]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.605 6v12L12 24l10.395-6V6z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Logo bordado</h4>
+              <p class="text-sm text-gray-300">Refuerza la pertenencia del equipo y la imagen frente a clientes y pacientes.</p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-3 p-4 glass rounded-lg" data-animate>
+            <div class="p-2 rounded-md bg-[var(--rosa)]/10 text-[var(--rosa)]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M2 12l1.5 2 4-6 6 8 7-10L22 4"/></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Funcionalidad real</h4>
+              <p class="text-sm text-gray-300">Telas resistentes, cómodas y adaptadas a la jornada laboral de cada sector.</p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-3 p-4 glass rounded-lg" data-animate>
+            <div class="p-2 rounded-md bg-[var(--verde-oliva)]/10 text-[var(--verde-oliva)]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v2H4zM4 10h10v2H4zM4 16h16v2H4z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Venta al por mayor</h4>
+              <p class="text-sm text-gray-300">Precios competitivos y logística pensada para instituciones.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Proceso visual -->
+      <div class="p-6 rounded-2xl glass" data-animate>
+        <h3 class="font-head text-2xl mb-4 accent-underline">Nuestro proceso</h3>
+        <ol class="space-y-4 text-gray-300">
+          <li class="flex gap-3 items-start">
+            <div class="w-10 h-10 rounded-full bg-[var(--celeste)]/10 flex items-center justify-center text-[var(--celeste)] font-semibold">1</div>
+            <div>
+              <strong>Asesoramiento por rubro</strong>
+              <div class="text-sm">Analizamos necesidades según tu actividad.</div>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <div class="w-10 h-10 rounded-full bg-[var(--verde)]/10 flex items-center justify-center text-[var(--verde)] font-semibold">2</div>
+            <div>
+              <strong>Propuesta personalizada</strong>
+              <div class="text-sm">Te enviamos modelos, telas y presupuesto mayorista.</div>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <div class="w-10 h-10 rounded-full bg-[var(--rosa)]/10 flex items-center justify-center text-[var(--rosa)] font-semibold">3</div>
+            <div>
+              <strong>Producción y control de calidad</strong>
+              <div class="text-sm">Cada lote pasa por control antes del envío.</div>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <div class="w-10 h-10 rounded-full bg-[var(--verde-oliva)]/10 flex items-center justify-center text-[var(--verde-oliva)] font-semibold">4</div>
+            <div>
+              <strong>Entrega y acompañamiento</strong>
+              <div class="text-sm">Coordinamos logística para recibir los uniformes en tiempo y forma.</div>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
-    <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
-      <h3 class="font-bold mb-2">Hospitalario</h3>
-      <p>Indumentaria funcional y cómoda para clínicas y hospitales.</p>
+  </section>
+
+  <!-- RUBROS / SECTORES -->
+  <section id="rubros" class="py-16 bg-[rgba(0,0,0,0.06)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="font-head text-3xl text-center mb-10" data-animate>Rubros que atendemos</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl glass text-center" data-animate>
+          <img src="./img/rubro-estetica.jpg" alt="Uniformes para estética" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
+          <h4 class="font-semibold mb-1">Estética</h4>
+          <p class="text-sm text-gray-300">Diseños elegantes y prácticos para salones y spas.</p>
+        </div>
+        <div class="p-6 rounded-2xl glass text-center" data-animate>
+          <img src="./img/rubro-hospitalario.jpg" alt="Uniformes hospitalarios" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
+          <h4 class="font-semibold mb-1">Hospitalario</h4>
+          <p class="text-sm text-gray-300">Indumentaria cómoda y segura para clínicas y hospitales.</p>
+        </div>
+        <div class="p-6 rounded-2xl glass text-center" data-animate>
+          <img src="./img/rubro-geriatria.jpg" alt="Uniformes para geriatría" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
+          <h4 class="font-semibold mb-1">Geriatría</h4>
+          <p class="text-sm text-gray-300">Prendas resistentes y fáciles de higienizar.</p>
+        </div>
+        <div class="p-6 rounded-2xl glass text-center" data-animate>
+          <img src="./img/rubro-gastronomia.jpg" alt="Uniformes para gastronomía" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
+          <h4 class="font-semibold mb-1">Gastronomía</h4>
+          <p class="text-sm text-gray-300">Diseños pensados para movilidad y limpieza.</p>
+        </div>
+        <div class="p-6 rounded-2xl glass text-center" data-animate>
+          <img src="./img/rubro-limpieza.jpg" alt="Uniformes para limpieza" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
+          <h4 class="font-semibold mb-1">Limpieza & Facility</h4>
+          <p class="text-sm text-gray-300">Telas resistentes y cómodas para turnos largos.</p>
+        </div>
+        <div class="p-6 rounded-2xl glass text-center" data-animate>
+          <img src="./img/rubro-reposteria.jpg" alt="Uniformes para repostería" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
+          <h4 class="font-semibold mb-1">Repostería</h4>
+          <p class="text-sm text-gray-300">Corte y materiales aptos para manipulación alimentaria.</p>
+        </div>
+      </div>
     </div>
-    <div class="p-6 bg-white bg-opacity-20 rounded-2xl shadow">
-      <h3 class="font-bold mb-2">Geriatría</h3>
-      <p>Uniformes resistentes y pensados para la atención de mayores.</p>
+  </section>
+
+  <!-- GALERÍA / PRODUCTOS DESTACADOS -->
+  <section id="galeria" class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="font-head text-3xl text-center mb-8" data-animate>Galería de trabajos</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl overflow-hidden shadow-lg" data-animate>
+        <img src="./img/gallery-1.jpg" alt="Uniformes - ejemplo 1" loading="lazy" class="w-full h-64 object-cover">
+        <div class="p-4 bg-[rgba(0,0,0,0.45)]">
+          <h4 class="font-semibold">Clínica San José</h4>
+          <p class="text-sm text-gray-300">Uniformes para personal clínico con logo bordado.</p>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-lg" data-animate>
+        <img src="./img/gallery-2.jpg" alt="Uniformes - ejemplo 2" loading="lazy" class="w-full h-64 object-cover">
+        <div class="p-4 bg-[rgba(0,0,0,0.45)]">
+          <h4 class="font-semibold">Spa Bella</h4>
+          <p class="text-sm text-gray-300">Diseños para estética y atención al cliente.</p>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-lg" data-animate>
+        <img src="./img/gallery-3.jpg" alt="Uniformes - ejemplo 3" loading="lazy" class="w-full h-64 object-cover">
+        <div class="p-4 bg-[rgba(0,0,0,0.45)]">
+          <h4 class="font-semibold">Residencia Los Álamos</h4>
+          <p class="text-sm text-gray-300">Uniformes resistentes y cómodos para geriatría.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FORMULARIO -->
-<section id="formulario" class="max-w-3xl mx-auto px-6 py-20">
-  <h2 class="text-3xl font-bold text-center mb-8">Solicitá tu Presupuesto</h2>
-  <form class="space-y-6 bg-white bg-opacity-20 p-8 rounded-2xl shadow">
-    <input type="text" placeholder="Nombre completo" class="w-full px-4 py-3 rounded-lg text-gray-800">
-    <input type="text" placeholder="Institución / Empresa" class="w-full px-4 py-3 rounded-lg text-gray-800">
-    <input type="number" placeholder="Cantidad estimada de uniformes" class="w-full px-4 py-3 rounded-lg text-gray-800">
-    <textarea placeholder="Mensaje" rows="4" class="w-full px-4 py-3 rounded-lg text-gray-800"></textarea>
-    <button class="w-full bg-teal-800 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg hover:bg-teal-700 transition">Enviar Solicitud</button>
-  </form>
-</section>
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="py-16 bg-[rgba(0,0,0,0.06)]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-head text-3xl text-center mb-8" data-animate>Qué dicen de nosotros</h2>
 
-<!-- FOOTER -->
-<footer class="bg-gray-900 bg-opacity-80 text-gray-400 py-10">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-    <p>© 2025 Valentino's Ambos. Todos los derechos reservados.</p>
-    <div class="flex gap-4 mt-4 md:mt-0">
-      <a href="#" class="hover:text-white">Instagram</a>
-      <a href="#" class="hover:text-white">Facebook</a>
-      <a href="#" class="hover:text-white">WhatsApp</a>
+      <div class="relative">
+        <!-- Simple testimonial carousel -->
+        <div id="testimonials" class="overflow-hidden">
+          <div class="flex transition-transform duration-700" style="width:300%">
+            <!-- Testimonial 1 -->
+            <div class="w-full flex-shrink-0 px-4" data-animate>
+              <div class="p-6 rounded-2xl glass">
+                <p class="text-gray-200 mb-4">"Excelente calidad y atención. Nos ayudaron a diseñar uniformes que representan nuestra clínica. El bordado quedó impecable."</p>
+                <div class="flex items-center gap-3">
+                  <img src="./img/testi-1.jpg" alt="Foto cliente 1" class="w-12 h-12 rounded-full object-cover">
+                  <div>
+                    <strong class="block">Dra. Mariana López</strong>
+                    <small class="text-sm text-gray-300">Directora - Clínica Los Álamos</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="w-full flex-shrink-0 px-4" data-animate>
+              <div class="p-6 rounded-2xl glass">
+                <p class="text-gray-200 mb-4">"Rápida respuesta y muy buena relación precio/calidad para pedidos grandes. Recomendados para salones y spas."</p>
+                <div class="flex items-center gap-3">
+                  <img src="./img/testi-2.jpg" alt="Foto cliente 2" class="w-12 h-12 rounded-full object-cover">
+                  <div>
+                    <strong class="block">Lucía Fernández</strong>
+                    <small class="text-sm text-gray-300">Propietaria - Spa Bella</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="w-full flex-shrink-0 px-4" data-animate>
+              <div class="p-6 rounded-2xl glass">
+                <p class="text-gray-200 mb-4">"Cumplieron con los tiempos y la calidad. El personal se siente parte de la marca desde que usan los uniformes."</p>
+                <div class="flex items-center gap-3">
+                  <img src="./img/testi-3.jpg" alt="Foto cliente 3" class="w-12 h-12 rounded-full object-cover">
+                  <div>
+                    <strong class="block">Carlos Méndez</strong>
+                    <small class="text-sm text-gray-300">Gerente - Residencia Los Álamos</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex justify-center gap-3 mt-6">
+          <button id="prevTesti" class="p-2 rounded-full glass hover:scale-105 transition" aria-label="Anterior">&#10094;</button>
+          <button id="nextTesti" class="p-2 rounded-full glass hover:scale-105 transition" aria-label="Siguiente">&#10095;</button>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-  const slides = document.querySelectorAll(".carousel img");
-  const indicators = document.querySelectorAll(".indicator");
-  const leftArrow = document.querySelector(".left-arrow");
-  const rightArrow = document.querySelector(".right-arrow");
-  let current = 0;
-  let interval;
+  <!-- CTA + FORMULARIO -->
+  <section id="contacto" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="p-8 rounded-2xl glass">
+      <h2 class="font-head text-2xl mb-4">Solicitá tu presupuesto mayorista</h2>
+      <p class="text-gray-300 mb-6">Completá el formulario y te contactamos en menos de 24 horas. También podés escribirnos por WhatsApp.</p>
 
-  function showSlide(index) {
-    slides.forEach((slide,i)=>{
-      slide.classList.toggle("active", i===index);
-      indicators[i].classList.toggle("active", i===index);
+      <!-- Formspree action: reemplazá la URL por tu endpoint -->
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4" novalidate>
+        <div>
+          <label for="name" class="text-sm">Nombre completo</label>
+          <input id="name" name="name" type="text" required class="w-full mt-2 px-4 py-3 rounded-lg text-[var(--azul-oscuro)]" placeholder="Ej. María Pérez" />
+        </div>
+
+        <div>
+          <label for="company" class="text-sm">Institución / Empresa</label>
+          <input id="company" name="company" type="text" class="w-full mt-2 px-4 py-3 rounded-lg text-[var(--azul-oscuro)]" placeholder="Ej. Clínica Los Álamos" />
+        </div>
+
+        <div>
+          <label for="email" class="text-sm">Email</label>
+          <input id="email" name="email" type="email" required class="w-full mt-2 px-4 py-3 rounded-lg text-[var(--azul-oscuro)]" placeholder="contacto@ejemplo.com" />
+        </div>
+
+        <div>
+          <label for="phone" class="text-sm">Teléfono / WhatsApp</label>
+          <input id="phone" name="phone" type="tel" class="w-full mt-2 px-4 py-3 rounded-lg text-[var(--azul-oscuro)]" placeholder="+54 9 11 1234 5678" />
+        </div>
+
+        <div class="md:col-span-2">
+          <label for="sector" class="text-sm">Sector / Rubro</label>
+          <select id="sector" name="sector" class="w-full mt-2 px-4 py-3 rounded-lg text-[var(--azul-oscuro)]">
+            <option>Estética</option>
+            <option>Hospitalario</option>
+            <option>Geriatría</option>
+            <option>Gastronomía</option>
+            <option>Limpieza</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="md:col-span-2">
+          <label for="message" class="text-sm">Mensaje / Detalle del pedido</label>
+          <textarea id="message" name="message" rows="4" class="w-full mt-2 px-4 py-3 rounded-lg text-[var(--azul-oscuro)]" placeholder="Cantidad estimada, tiempos, talles, etc."></textarea>
+        </div>
+
+        <div class="md:col-span-2 flex gap-3 items-center">
+          <button type="submit" class="px-6 py-3 rounded-full bg-[var(--verde)] font-semibold hover:scale-105 transition">Enviar solicitud</button>
+          <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-[var(--celeste)]/10 ring-1 ring-[var(--celeste)] hover:scale-105 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--celeste)]" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.966 11.966 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.64 6.01L0 24l6.09-1.58A11.94 11.94 0 0012 24c6.628 0 12-5.372 12-12 0-3.2-1.25-6.13-3.48-8.52zM12 21.8c-1.84 0-3.62-.5-5.18-1.44l-.37-.22-3.62.94.96-3.54-.24-.37A9.78 9.78 0 012.2 12 9.8 9.8 0 0112 2.2c5.42 0 9.8 4.38 9.8 9.8 0 5.42-4.38 9.8-9.8 9.8z"/><path d="M17.2 14.64c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.13-.18.27-.71.88-.87 1.06-.16.18-.33.21-.61.07-.27-.13-1.13-.41-2.15-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.33.4-.5.13-.18.18-.33.27-.55.09-.22.04-.41-.02-.55-.06-.15-.61-1.48-.84-2.03-.22-.53-.44-.46-.61-.47l-.52-.01c-.18 0-.47.06-.72.33-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.94 2.96 4.7 4.03 1.65.71 2.42.85 3.29.69.53-.09 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.06-.12-.25-.18-.52-.31z"/></svg>
+            <span class="text-[var(--celeste)] font-medium">Enviar por WhatsApp</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[var(--azul-oscuro)] text-gray-400 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <strong>Valentino's Ambos</strong>
+        <div class="text-sm text-gray-400">Producción nacional · Bordado · Venta mayorista</div>
+      </div>
+
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white">Instagram</a>
+        <a href="#" class="hover:text-white">Facebook</a>
+        <a href="#" class="hover:text-white">WhatsApp</a>
+      </div>
+
+      <div class="text-sm text-gray-400">
+        © <span id="year"></span> Valentino's Ambos. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50 whatsapp-float p-4 rounded-full flex items-center gap-3 text-white shadow-lg hover:scale-105 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.966 11.966 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.64 6.01L0 24l6.09-1.58A11.94 11.94 0 0012 24c6.628 0 12-5.372 12-12 0-3.2-1.25-6.13-3.48-8.52zM12 21.8c-1.84 0-3.62-.5-5.18-1.44l-.37-.22-3.62.94.96-3.54-.24-.37A9.78 9.78 0 012.2 12 9.8 9.8 0 0112 2.2c5.42 0 9.8 4.38 9.8 9.8 0 5.42-4.38 9.8-9.8 9.8z"/><path d="M17.2 14.64c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.13-.18.27-.71.88-.87 1.06-.16.18-.33.21-.61.07-.27-.13-1.13-.41-2.15-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.33.4-.5.13-.18.18-.33.27-.55.09-.22.04-.41-.02-.55-.06-.15-.61-1.48-.84-2.03-.22-.53-.44-.46-.61-.47l-.52-.01c-.18 0-.47.06-.72.33-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.94 2.96 4.7 4.03 1.65.71 2.42.85 3.29.69.53-.09 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.06-.12-.25-.18-.52-.31z"/></svg>
+    <span class="hidden sm:inline">Escribinos</span>
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btnMenu = document.getElementById('btnMenu');
+    const mobileNav = document.getElementById('mobileNav');
+    btnMenu.addEventListener('click', ()=> mobileNav.classList.toggle('hidden'));
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('[data-animate]').forEach((el, i) => {
+      // stagger delays
+      el.style.transitionDelay = `${i * 80}ms`;
+      observer.observe(el);
     });
-    current = index;
-  }
 
-  function nextSlide() {
-    showSlide((current+1)%slides.length);
-  }
-  function prevSlide() {
-    showSlide((current-1+slides.length)%slides.length);
-  }
+    // Simple testimonials carousel (no dependency)
+    (function() {
+      const wrap = document.querySelector('#testimonials > div');
+      const next = document.getElementById('nextTesti');
+      const prev = document.getElementById('prevTesti');
+      const totalSlides = wrap.children.length;
+      let index = 0;
 
-  if(rightArrow) rightArrow.addEventListener("click", ()=>{ nextSlide(); resetInterval(); });
-  if(leftArrow) leftArrow.addEventListener("click", ()=>{ prevSlide(); resetInterval(); });
+      function update() {
+        const offset = index * (100 / totalSlides);
+        wrap.style.transform = `translateX(-${offset}%)`;
+      }
 
-  indicators.forEach((dot,i)=>{
-    dot.addEventListener("click", ()=>{ showSlide(i); resetInterval(); });
-  });
+      next.addEventListener('click', ()=> { index = (index + 1) % totalSlides; update(); });
+      prev.addEventListener('click', ()=> { index = (index - 1 + totalSlides) % totalSlides; update(); });
 
-  function startInterval(){ interval = setInterval(nextSlide, 3000); }
-  function resetInterval(){ clearInterval(interval); startInterval(); }
-
-  showSlide(0);
-  startInterval();
-</script>
-
+      // autoplay
+      let auto = setInterval(()=> { index = (index + 1) % totalSlides; update(); }, 5000);
+      [next, prev, wrap].forEach(el => el.addEventListener('mouseenter', ()=> clearInterval(auto)));
+      [next, prev, wrap].forEach(el => el.addEventListener('mouseleave', ()=> auto = setInterval(()=> { index = (index + 1) % totalSlides; update(); }, 5000)));
+    })();
+  </script>
 </body>
 </html>
