@@ -90,7 +90,7 @@
   <header class="sticky top-0 z-50">
     <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between glass">
       <a href="#" class="flex items-center gap-3">
-        <img src="./img/logo-placeholder.png" alt="Logo Valentino's Ambos" class="w-12 h-12 rounded-md object-cover">
+        <img src="./img/logo.png" alt="Logo Valentino's Ambos" class="w-12 h-12 rounded-md object-cover">
         <div>
           <span class="block font-head text-lg">Valentino's Ambos</span>
           <small class="block text-xs text-gray-300">Uniformes profesionales al por mayor</small>
@@ -108,7 +108,7 @@
       <!-- Mobile menu button (simple) -->
       <div class="md:hidden">
         <button id="btnMenu" aria-label="Abrir menú" class="p-2 rounded-md glass">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg xmlns="" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </nav>
@@ -127,40 +127,94 @@
 
   <!-- HERO -->
   <main class="hero-bg min-h-[80vh] relative">
-    <div class="overlay absolute inset-0"></div>
-    <div class="max-w-7xl mx-auto px-6 py-24 relative z-20">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="font-head text-4xl md:text-5xl leading-tight mb-4" data-animate>
-            Equipamos la imagen de tu equipo con <span class="text-[var(--celeste)]">estilo</span> y <span class="text-[var(--rosa)]">profesionalismo</span>.
-          </h1>
-          <p class="text-gray-200 max-w-xl mb-6" data-animate>Diseñamos uniformes por rubro, personalizados con tu logo bordado. Soluciones mayoristas para clínicas, estéticas, geriátricos y empresas.</p>
+<div class="overlay absolute inset-0"></div>
+<div class="max-w-7xl mx-auto px-6 py-24 relative z-20">
+  <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Texto hero -->
+    <div>
+      <h1 class="font-head text-4xl md:text-5xl leading-tight mb-4" data-animate>
+        Equipamos la imagen de tu equipo con <span class="text-[var(--celeste)]">estilo</span> y <span class="text-[var(--rosa)]">profesionalismo</span>.
+      </h1>
+      <p class="text-gray-200 max-w-xl mb-6" data-animate>
+        Diseñamos uniformes por rubro, personalizados con tu logo bordado. Soluciones mayoristas para clínicas, estéticas, geriátricos y empresas.
+      </p>
 
-          <div class="flex flex-wrap gap-3" data-animate>
-            <a href="#contacto" class="inline-block px-6 py-3 rounded-full bg-[var(--verde)] font-semibold shadow-lg hover:scale-105 transition transform">Solicitar presupuesto</a>
-            <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-transparent ring-1 ring-[var(--celeste)] hover:bg-[rgba(60,188,203,0.08)] transition">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--celeste)]" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.966 11.966 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.64 6.01L0 24l6.09-1.58A11.94 11.94 0 0012 24c6.628 0 12-5.372 12-12 0-3.2-1.25-6.13-3.48-8.52zM12 21.8c-1.84 0-3.62-.5-5.18-1.44l-.37-.22-3.62.94.96-3.54-.24-.37A9.78 9.78 0 012.2 12 9.8 9.8 0 0112 2.2c5.42 0 9.8 4.38 9.8 9.8 0 5.42-4.38 9.8-9.8 9.8z"/><path d="M17.2 14.64c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.13-.18.27-.71.88-.87 1.06-.16.18-.33.21-.61.07-.27-.13-1.13-.41-2.15-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.33.4-.5.13-.18.18-.33.27-.55.09-.22.04-.41-.02-.55-.06-.15-.61-1.48-.84-2.03-.22-.53-.44-.46-.61-.47l-.52-.01c-.18 0-.47.06-.72.33-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.94 2.96 4.7 4.03 1.65.71 2.42.85 3.29.69.53-.09 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.06-.12-.25-.18-.52-.31z"/></svg>
-              <span class="text-[var(--celeste)] font-medium">WhatsApp</span>
-            </a>
-          </div>
+      <div class="flex flex-wrap gap-3" data-animate>
+        <a href="#contacto" class="inline-block px-6 py-3 rounded-full bg-[var(--verde)] font-semibold shadow-lg hover:scale-105 transition transform">
+          Solicitar presupuesto
+        </a>
+        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-transparent ring-1 ring-[var(--celeste)] hover:bg-[rgba(60,188,203,0.08)] transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--celeste)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.52 3.48A11.966 11.966 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.64 6.01L0 24l6.09-1.58A11.94 11.94 0 0012 24c6.628 0 12-5.372 12-12 0-3.2-1.25-6.13-3.48-8.52zM12 21.8c-1.84 0-3.62-.5-5.18-1.44l-.37-.22-3.62.94.96-3.54-.24-.37A9.78 9.78 0 012.2 12 9.8 9.8 0 0112 2.2c5.42 0 9.8 4.38 9.8 9.8 0 5.42-4.38 9.8-9.8 9.8z"/>
+            <path d="M17.2 14.64c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.13-.18.27-.71.88-.87 1.06-.16.18-.33.21-.61.07-.27-.13-1.13-.41-2.15-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.33.4-.5.13-.18.18-.33.27-.55.09-.22.04-.41-.02-.55-.06-.15-.61-1.48-.84-2.03-.22-.53-.44-.46-.61-.47l-.52-.01c-.18 0-.47.06-.72.33-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.94 2.96 4.7 4.03 1.65.71 2.42.85 3.29.69.53-.09 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.06-.12-.25-.18-.52-.31z"/>
+          </svg>
+          <span class="text-[var(--celeste)] font-medium">WhatsApp</span>
+        </a>
+      </div>
 
-          <div class="mt-6 text-sm text-gray-300" data-animate>
-            <span class="inline-block mr-3">✅ Producción nacional</span>
-            <span class="inline-block mr-3">✅ Bordado de logo</span>
-            <span class="inline-block">✅ Envíos a todo el país</span>
-          </div>
-        </div>
-
-        <!-- Hero image / placeholder -->
-        <div class="relative flex items-center justify-center" data-animate>
-          <div class="w-full max-w-[520px] rounded-2xl overflow-hidden shadow-2xl glass p-4">
-            <img src="./img/hero-team-placeholder.jpg" alt="Equipo con uniformes profesionales" loading="lazy" class="w-full h-64 object-cover rounded-md">
-            <div class="mt-4 text-sm text-gray-300">Ejemplo de uniformes corporativos personalizados — imagen ilustrativa</div>
-          </div>
-        </div>
+      <div class="mt-6 text-sm text-gray-300" data-animate>
+        <span class="inline-block mr-3">✅ Producción nacional</span>
+        <span class="inline-block mr-3">✅ Bordado de logo</span>
+        <span class="inline-block">✅ Envíos a todo el país</span>
       </div>
     </div>
+
+    <!-- Hero image -->
+    <div class="relative flex items-center justify-center" data-animate>
+      <div class="w-full max-w-md lg:max-w-full">
+        <img 
+          src="./img/banner.png" 
+          alt="Equipo con uniformes profesionales"
+          loading="lazy" 
+          width="1024"
+          height="1536"
+          class="w-full h-auto max-h-[400px] lg:max-h-[800px] object-cover rounded-xl "
+        />            
+        <!-- <div class="mt-4 text-sm text-gray-300">Ejemplo de uniformes corporativos personalizados — imagen ilustrativa</div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
   </main>
+
+  <!-- Contador -->
+<section class="my-16 flex flex-col items-center">
+  <h2 class="text-2xl font-bold mb-6 text-center text-cyan-400 drop-shadow-neon-cyan">
+    Ambos entregados actualmente
+  </h2>
+
+  <div id="counter" class="text-4xl font-bold text-cyan-500 mt-2">
+    0
+  </div>
+</section>
+
+<script>
+  const counter = document.getElementById("counter");
+  let counted = false; // Para que solo cuente una vez
+
+  function animateCounter() {
+    const top = counter.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (top < windowHeight && !counted) {
+      counted = true;
+      let start = 0;
+      const end = 1371;
+      const duration = 2000; // 2 segundos
+      const stepTime = Math.floor(duration / end);
+
+      const timer = setInterval(() => {
+        start += 1;
+        counter.innerText = start;
+        if (start >= end) clearInterval(timer);
+      }, stepTime);
+    }
+  }
+
+  window.addEventListener("scroll", animateCounter);
+</script>
+
 
   <!-- BENEFICIOS / PROPOSICION DE VALOR -->
   <section id="beneficios" class="max-w-7xl mx-auto px-6 py-20">
@@ -250,44 +304,50 @@
     </div>
   </section>
 
-  <!-- RUBROS / SECTORES -->
-  <section id="rubros" class="py-16 bg-[rgba(0,0,0,0.06)]">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="font-head text-3xl text-center mb-10" data-animate>Rubros que atendemos</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl glass text-center" data-animate>
-          <img src="./img/rubro-estetica.jpg" alt="Uniformes para estética" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
-          <h4 class="font-semibold mb-1">Estética</h4>
-          <p class="text-sm text-gray-300">Diseños elegantes y prácticos para salones y spas.</p>
-        </div>
-        <div class="p-6 rounded-2xl glass text-center" data-animate>
-          <img src="./img/rubro-hospitalario.jpg" alt="Uniformes hospitalarios" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
-          <h4 class="font-semibold mb-1">Hospitalario</h4>
-          <p class="text-sm text-gray-300">Indumentaria cómoda y segura para clínicas y hospitales.</p>
-        </div>
-        <div class="p-6 rounded-2xl glass text-center" data-animate>
-          <img src="./img/rubro-geriatria.jpg" alt="Uniformes para geriatría" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
-          <h4 class="font-semibold mb-1">Geriatría</h4>
-          <p class="text-sm text-gray-300">Prendas resistentes y fáciles de higienizar.</p>
-        </div>
-        <div class="p-6 rounded-2xl glass text-center" data-animate>
-          <img src="./img/rubro-gastronomia.jpg" alt="Uniformes para gastronomía" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
-          <h4 class="font-semibold mb-1">Gastronomía</h4>
-          <p class="text-sm text-gray-300">Diseños pensados para movilidad y limpieza.</p>
-        </div>
-        <div class="p-6 rounded-2xl glass text-center" data-animate>
-          <img src="./img/rubro-limpieza.jpg" alt="Uniformes para limpieza" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
-          <h4 class="font-semibold mb-1">Limpieza & Facility</h4>
-          <p class="text-sm text-gray-300">Telas resistentes y cómodas para turnos largos.</p>
-        </div>
-        <div class="p-6 rounded-2xl glass text-center" data-animate>
-          <img src="./img/rubro-reposteria.jpg" alt="Uniformes para repostería" loading="lazy" class="mx-auto w-28 h-28 object-cover rounded-full mb-4">
-          <h4 class="font-semibold mb-1">Repostería</h4>
-          <p class="text-sm text-gray-300">Corte y materiales aptos para manipulación alimentaria.</p>
-        </div>
+<!-- RUBROS / COLLAGE -->
+<section id="rubros" class="py-16 bg-[rgba(0,0,0,0.06)]">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="font-head text-3xl text-center mb-10" data-animate>Rubros que atendemos</h2>
+
+    <!-- Grid de imágenes tipo collage -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-animate>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/cirugia.png" alt="Estética" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/dermatologia.png" alt="Hospitalario" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/farmacia.png" alt="Geriatría" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/estetica.png" alt="Gastronomía" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/geriatria.png" alt="Limpieza & Facility" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/hoteleria.png" alt="Repostería" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/kinesiologia.png" alt="Repostería" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/limpieza.png" alt="Repostería" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/odontologia.png" alt="Repostería" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/pastelería.png" alt="Repostería" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="./img/rubros/Valentinos Ambos/veterinaria.png" alt="Repostería" loading="lazy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300">
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- GALERÍA / PRODUCTOS DESTACADOS -->
   <section id="galeria" class="max-w-7xl mx-auto px-6 py-20">
