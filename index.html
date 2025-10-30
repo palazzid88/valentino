@@ -393,7 +393,7 @@
 <section id="trabajos" class="py-20 bg-[var(--verde-oscuro)] text-[var(--blanco)]">
   <div class="max-w-6xl mx-auto px-6">
     <h2 class="text-3xl font-bold text-center mb-10 text-[var(--celeste)]">
-      Nuestros trabajos más recientes
+      TENEMOS EL AMBO JUSTO PARA TU PROFESIÓN
     </h2>
 
     <div class="overflow-x-auto flex space-x-6 pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-[var(--verde)]">
@@ -426,9 +426,24 @@
 <!-- ========================== -->
 <section id="taller" class="py-20 bg-[var(--azul-oscuro)] text-[var(--blanco)]">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6">
-    <img src="./img/tela.png" alt="Taller de confección"
-      class="rounded-2xl shadow-xl object-cover w-full h-[400px]" />
 
+    <!-- Carrusel automático -->
+    <div class="relative w-full h-[400px] overflow-hidden rounded-2xl">
+      <div id="carousel" class="w-full h-full">
+        <img src="./img/taller/taller1.png" alt="Taller de confección 1"
+             class="absolute inset-0 w-full h-auto max-h-[600px] mx-auto object-contain opacity-100 transition-opacity duration-1000" />
+        <img src="./img/taller/taller2.png" alt="Taller de confección 2"
+             class="absolute inset-0 w-full h-auto max-h-[600px] mx-auto object-contain opacity-0 transition-opacity duration-1000" />
+        <img src="./img/taller/taller3.png" alt="Taller de confección 3"
+             class="absolute inset-0 w-full h-auto max-h-[600px] mx-auto object-contain opacity-0 transition-opacity duration-1000" />
+        <img src="./img/taller/taller4.png" alt="Taller de confección 4"
+             class="absolute inset-0 w-full h-auto max-h-[600px] mx-auto object-contain opacity-0 transition-opacity duration-1000" />
+        <img src="./img/taller/taller5.png" alt="Taller de confección 5"
+             class="absolute inset-0 w-full h-auto max-h-[600px] mx-auto object-contain opacity-0 transition-opacity duration-1000" />
+      </div>
+    </div>
+
+    <!-- Texto -->
     <div>
       <h2 class="text-3xl font-bold mb-4 text-[var(--celeste)]">
         Hechos con dedicación en nuestro taller
@@ -444,8 +459,28 @@
         Pedí tu presupuesto
       </a>
     </div>
+
   </div>
 </section>
+
+<!-- Script del carrusel -->
+<script>
+  const slides = document.querySelectorAll("#carousel img");
+  let current = 0;
+
+  function showNextSlide() {
+    slides[current].classList.remove("opacity-100");
+    slides[current].classList.add("opacity-0");
+
+    current = (current + 1) % slides.length;
+
+    slides[current].classList.remove("opacity-0");
+    slides[current].classList.add("opacity-100");
+  }
+
+  setInterval(showNextSlide, 4000); // cambia cada 4 segundos
+</script>
+
 
 
   <!-- TESTIMONIOS -->
